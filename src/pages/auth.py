@@ -105,7 +105,7 @@ def login():
 def start_auth_page():
     print(users)
     while True:
-        print("\n=== REACH Wellness Platform ===")
+        print("\n=== REACH ===")
         print("1. Login")
         print("2. Create Account")
         print("0. Exit")

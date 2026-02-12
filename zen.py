@@ -1,5 +1,6 @@
 import time
 import math
+from datetime import date
 
 # Initialize variables
 current_date = 0
@@ -16,11 +17,8 @@ mode_select = 0
 def clamp_0_10000(x):
     return max(0, min(10000, x))
 
-
-
-#TODO: implement current date
 def current_date():
-    pass
+    print(date.today())
 
 def set_time():
     global time_remaining

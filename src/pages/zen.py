@@ -51,7 +51,7 @@ def start():
 
 
         
-def menu():
+def zen_menu():
     while True:
         print("1. display date\n2. set time\n3. start\n4. set daily target\n5. quit")
         mode_select = int(input())
@@ -67,4 +67,4 @@ def menu():
             break
 
         
-menu()
+

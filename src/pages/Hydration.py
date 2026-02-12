@@ -86,4 +86,3 @@ def add_water(water_total, water_entries):
 def clear_water():
   return 0, []
 
-hydration_menu()

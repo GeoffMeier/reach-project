@@ -66,7 +66,7 @@ def start_workout(difficulty_level):
     return total_time, exercise_score
 
     
-#This is where the user will be able to pick which level they prefer to workout at, and also for them to actually see their workout routine.
+#This is where the user will be able to pick which level they prefer to workout at, and also for them to see their workout routine.
 while True:
     print("-" * 25)
     print("1. Start Easy Workout")
@@ -90,6 +90,7 @@ while True:
     elif user_choice == "4":
         print("Goodbye!")
         break
+
 
 
 

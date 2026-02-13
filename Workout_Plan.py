@@ -34,7 +34,7 @@ def countdown(minutes):
         t -= 1
     print("Workout complete!")
 
-#This is section is for the user to see on the screen their outputted level that they have selected, and also for them to see their workout out routine
+#This section is for the user to see on the screen their outputted level that they have selected, and also for them to see their workout out routine
 #User will also have a customized score based on their difficulty level they chose to go with
 def start_workout(difficulty_level):
     selected_excersise = random.choice(workout_level[difficulty_level])
@@ -90,6 +90,7 @@ while True:
     elif user_choice == "4":
         print("Goodbye!")
         break
+
 
 
 

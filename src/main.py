@@ -71,3 +71,10 @@ print(user.reach_score)
 user.set_food_score(1.2)
 user.get_food_score()
 user.get_water_score()
+
+
+# main.py
+from pages.auth import start_auth_page
+
+if __name__ == "__main__":
+    start_auth_page()  # Start the program

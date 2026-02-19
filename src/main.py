@@ -74,7 +74,33 @@ user.get_water_score()
 
 
 # main.py
+import sys
 from pages.auth import start_auth_page
 
 if __name__ == "__main__":
     start_auth_page()  # Start the program
+ 
+def main():
+    modesel = 0
+    print("Select a mode:\n1. Hydration mode\n2. Meal Plan\n3. Workout plan\n4. Zen mode\n5. Authentication\n6. Exit\n")
+    modesel = int(input())
+    
+    if modesel == 1:
+        #CALL HYDRATION HERE
+        pass
+    elif modesel == 2:
+        #CALL MEALPLAN HERE
+        pass
+    elif modesel == 3:
+        #CALL WORKOUT PLAN HERE
+        pass
+    elif modesel == 4:
+        #CALL ZEN MODE HERE
+        pass
+    elif modesel == 5:
+        #CALL AUTH HERE
+        pass
+    elif modesel == 6:
+        sys.exit()
+
+main()

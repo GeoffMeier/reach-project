@@ -165,4 +165,3 @@ def hydration_summary(current_time, reminder_clock, daily_water_target_oz, water
       print(f"{timestamp}: {amount} ounces")
   print()
 
-hydration_menu()

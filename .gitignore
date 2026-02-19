@@ -1,0 +1,19 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# User data files
+Userinfo/user.txt
+Userinfo/*.txt
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp

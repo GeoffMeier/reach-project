@@ -57,7 +57,13 @@ class User:
         print(self.water_score)
         
     def get_zen_score(self):
-        print(self.zen_score)      
+        print(self.zen_score)  
+        
+    def calc_reach_score(self):
+        self.reach_score = (self.food_score * 3) + (self.water_score * 3.5) + (self.exercise_score * 2.5) + self.zen_score
+    
+    def print_reach_score(self):
+        print(self.reach_score)
 
 
 
@@ -82,7 +88,7 @@ if __name__ == "__main__":
  
 def main():
     modesel = 0
-    print("Select a mode:\n1. Hydration mode\n2. Meal Plan\n3. Workout plan\n4. Zen mode\n5. Authentication\n6. Exit\n")
+    print("Select a mode:\n1. Hydration mode\n2. Meal Plan\n3. Workout plan\n4. Zen mode\n5. Authentication\n6. Reach score\n7. Exit\n")
     modesel = int(input())
     
     if modesel == 1:
@@ -101,6 +107,8 @@ def main():
         #CALL AUTH HERE
         pass
     elif modesel == 6:
+        user.print_reach_score()
+    elif modesel == 7:
         sys.exit()
 
 main()

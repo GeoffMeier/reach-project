@@ -10,8 +10,8 @@ env/
 .venv/
 
 # User data files
-Userinfo/user.txt
-Userinfo/*.txt
+
+users.txt
 
 # IDE/editor files
 .vscode/

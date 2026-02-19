@@ -81,10 +81,10 @@ user.get_water_score()
 
 # main.py
 import sys
-#from pages.auth import start_auth_page
+from pages.auth import start_auth_page
 
-#if __name__ == "__main__":
-#    start_auth_page()  # Start the program
+if __name__ == "__main__":
+    start_auth_page()  # Start the program
  
 def main():
     modesel = 0

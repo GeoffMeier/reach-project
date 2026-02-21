@@ -75,35 +75,36 @@ daily_targ_min = 30
 total_score = 0
     
 #This is where the user will be able to pick which level they prefer to workout at, and also for them to actually see their workout routine.
-while True:
-    print("-" * 25)
-    print("1. Start Easy Workout")
-    print("2. Start Medium Workout")
-    print("3. Start Hard Workout")
-    print("4. Exit")
+def workoutmenu():
+    while True:
+        print("-" * 25)
+        print("1. Start Easy Workout")
+        print("2. Start Medium Workout")
+        print("3. Start Hard Workout")
+        print("4. Exit")
 
-    user_choice = input("Choose level you would like to workout at (1. Easy, 2. Medium, 3. Hard, 4. Exit):")
+        user_choice = input("Choose level you would like to workout at (1. Easy, 2. Medium, 3. Hard, 4. Exit):")
 
-    if user_choice == "1":
-        total_min, earned_score = start_workout("Easy", total_min, daily_targ_min)
-        total_score += earned_score
+        if user_choice == "1":
+            total_min, earned_score = start_workout("Easy", total_min, daily_targ_min)
+            total_score += earned_score
 
-    elif user_choice == "2":
-        total_min, earned_score =start_workout("Medium", total_min, daily_targ_min)
-        total_score += earned_score
-
-
-    elif user_choice == "3":
-        total_min, earned_score =start_workout("Hard", total_min, daily_targ_min)
-        total_score += earned_score
+        elif user_choice == "2":
+            total_min, earned_score =start_workout("Medium", total_min, daily_targ_min)
+            total_score += earned_score
 
 
-    elif user_choice == "4":
-        print("Goodbye! Final Score: {total_score}")
-        user.set_exercise_score(total_score)
-        break
-    else:
-        print("Invalid selection. please choose between 1, 2, 3, 4.")
+        elif user_choice == "3":
+            total_min, earned_score =start_workout("Hard", total_min, daily_targ_min)
+            total_score += earned_score
+
+
+        elif user_choice == "4":
+            print("Goodbye! Final Score: {total_score}")
+            user.set_exercise_score(total_score)
+            break
+        else:
+            print("Invalid selection. please choose between 1, 2, 3, 4.")
 
 
 

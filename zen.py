@@ -45,6 +45,7 @@ def start():
         
     if time_remaining == 0:
         print(f"Timer finished. Score: {zen_score:.0f}")
+        #TODO: add to user object
     
 
 
@@ -64,5 +65,3 @@ def menu():
         elif mode_select == 5:
             break
 
-        
-menu()

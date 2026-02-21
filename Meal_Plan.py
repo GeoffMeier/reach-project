@@ -211,53 +211,34 @@ def food_score_calc(calorie_target, calories_consumed):
     return calc_score
 
 
-while True:
-    score = food_score_calc(calorie_target, calories_consumed)
+def mealmenu():
+    while True:
+        score = food_score_calc(calorie_target, calories_consumed)
 
-    print("choose from the selection list:")
-    print("1. Cuisine selection")
-    print("2. Log nutrition")
-    print("3. Nutrition Dashboard")
-    print("4. Exit/Final Score Calculation")
+        print("choose from the selection list:")
+        print("1. Cuisine selection")
+        print("2. Log nutrition")
+        print("3. Nutrition Dashboard")
+        print("4. Exit/Final Score Calculation")
 
-    user_choice = input("Select from (1-4):")
+        user_choice = input("Select from (1-4):")
 
-    if user_choice == "1":
-        calories_consumed, p_tot, f_tot, c_tot = food_recommendations(calories_consumed, p_tot, f_tot, c_tot)
-
-
-    elif user_choice == "2":
-        calories_consumed, p_tot, f_tot, c_tot = log_nutrition(calories_consumed, p_tot, f_tot, c_tot)
+        if user_choice == "1":
+            calories_consumed, p_tot, f_tot, c_tot = food_recommendations(calories_consumed, p_tot, f_tot, c_tot)
 
 
-    elif user_choice == "3":
-        nutrition_dashboard(calorie_target, calories_consumed, p_tot, f_tot, c_tot, score)
+        elif user_choice == "2":
+            calories_consumed, p_tot, f_tot, c_tot = log_nutrition(calories_consumed, p_tot, f_tot, c_tot)
 
 
-    elif user_choice == "4":
-        final_score = food_score_calc(calorie_target, calories_consumed)
-        user.set_food_score(final_score)
-        print(f"Goodbye! Your final health score is: {score}")
-        break
-    else:
-        print("Please choose from 1, 2, 3, and 4.")
+        elif user_choice == "3":
+            nutrition_dashboard(calorie_target, calories_consumed, p_tot, f_tot, c_tot, score)
 
 
-    
-
-
-        
-
-    
-
-
-        
-
-
-
-
-
-
-
-
-    
+        elif user_choice == "4":
+            final_score = food_score_calc(calorie_target, calories_consumed)
+            user.set_food_score(final_score)
+            print(f"Goodbye! Your final health score is: {score}")
+            break
+        else:
+            print("Please choose from 1, 2, 3, and 4.")

@@ -3,7 +3,7 @@ from zoneinfo import ZoneInfo
 
 # Variables 
 
-def hydration_menu():
+def hydration_menu(username=None):
   userID = None 
   currentDate = datetime.now(ZoneInfo("America/Chicago")).date() 
   waterScore = 0 
@@ -39,7 +39,7 @@ def hydration_menu():
     print("4. Show Hydration Summary")
     print("5. Return to Main Menu\n")
 
-    choice = input("Enter selection (1-4): ") # user selection
+    choice = input("Enter selection (1-5): ") # user selection
 
     if choice == '1':
       daily_water_target_oz = set_goal()
@@ -52,7 +52,13 @@ def hydration_menu():
     elif choice == '4':
       hydration_summary(current_time, reminder_clock, daily_water_target_oz, water_intake_oz, waterScore, progress, water_entries)
     elif choice == '5':
-      break
+      print(f"Exiting Hydration. Your Hydration Score is: {waterScore}")
+
+      if username:
+        from pages.auth import update_user_field
+        update_user_field(username, "water_score", waterScore)
+
+      return waterScore
     else:
       print("[Invalid selection. Please try again.]\n")
 
@@ -165,3 +171,4 @@ def hydration_summary(current_time, reminder_clock, daily_water_target_oz, water
       print(f"{timestamp}: {amount} ounces")
   print()
 
+#hydration_menu()

@@ -14,10 +14,30 @@ def load_users():
                 users = {}
     else:
         users = {}
+    for user in users.values():
+        user.setdefault("food_score", 0.0)
+        user.setdefault("exercise_score", 0.0)
+        user.setdefault("water_score", 0.0)
+        user.setdefault("zen_score", 0.0)
+        user.setdefault("reach_score", 0.0)
 
 def save_users():
     with open(USERS_FILE, "w") as f:
         json.dump(users, f, indent=4)
+
+def update_user_field(username, field_name, new_value):
+    load_users()
+
+    if username not in users:
+        print("User not found.")
+        return
+
+    if field_name not in users[username]:
+        print("Invalid field.")
+        return
+
+    users[username][field_name] = new_value
+    save_users()        
 
 
 def get_string(prompt):
@@ -109,10 +129,10 @@ def login():
     if username in users and users[username]["password"] == password:
         print(f"\nWelcome {users[username]['first_name']}!")
         print(f"User ID: {users[username]['userID']}")
-        return True
+        return username   # ✅ return username instead of True
     else:
         print("Invalid username or password.")
-        return False
+        return None
 
 
 def start_auth_page():
@@ -126,11 +146,11 @@ def start_auth_page():
 
         choice = input("Select option: ")
         if choice == "1":
-            if login():
+            username = login()
+            if username:
                 print("Access granted.")
-
-                home_menu()
-                break
+                home_menu(username)   # ✅ pass username
+                
         elif choice == "2":
             create_account()
         elif choice == "0":

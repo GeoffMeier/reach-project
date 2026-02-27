@@ -129,7 +129,7 @@ def login():
     if username in users and users[username]["password"] == password:
         print(f"\nWelcome {users[username]['first_name']}!")
         print(f"User ID: {users[username]['userID']}")
-        return username   # ✅ return username instead of True
+        return username   #  return username instead of True
     else:
         print("Invalid username or password.")
         return None
@@ -149,7 +149,7 @@ def start_auth_page():
             username = login()
             if username:
                 print("Access granted.")
-                home_menu(username)   # ✅ pass username
+                home_menu(username)   #  pass username
                 
         elif choice == "2":
             create_account()

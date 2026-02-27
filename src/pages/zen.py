@@ -1,6 +1,7 @@
 import time
 import math
 from datetime import date
+import winsound
 
 # Initialize variables
 
@@ -13,6 +14,8 @@ daily_target = 600
 
 zen_score = 0
 mode_select = 0
+
+beeps = 3
 
 def clamp_0_10000(x):
     return max(0, min(10000, x))
@@ -45,21 +48,42 @@ def start():
 
         zen_score = clamp_0_10000(zen_score)
 
-        print(f"Time left: {time_remaining} seconds, score {zen_score:.0f}", end="\r")
+        print(f"Time left: {time_remaining} seconds ", end="\r")
 
         time.sleep(1)
         time_remaining -= 1
-
-    print(" " * 50, end="\r")  # clear line
-    print(f"Timer finished. Score: {zen_score:.0f}")
+        
+    winsound.Beep(300, 1000)
+    print(" " * 100, end="\r")  # clear line
+    print(f"\nTimer finished. Score: {zen_score:.0f}")
+    time.sleep(2)
     return int(zen_score)
     
+def set_reminder():
+    reminder_time = 0
 
+    print("\nSet a duration for the reminder (minutes): ")
+    reminder_time = float(input()) * 60
+    print(f"Reminder set for {reminder_time / 60} minutes.\n")
+    
+    while reminder_time > 0:
+        time.sleep(1)
+        reminder_time -= 1
+    
+    if reminder_time == 0:
+        while beeps > 0:
+            winsound.Beep(500, 400)
+            time.sleep(0.4)
+            beeps -= 1
+
+        print("\nReminder time finished.")
+        beeps = 3
+    
 
         
 def menu(username):
     while True:
-        print("1. display date\n2. set time\n3. start\n4. set daily target\n5. quit")
+        print("\n1. Display date\n2. Set time\n3. Start\n4. Set daily target\n5. Set reminder\n6. Exit")
         mode_select = int(input())
         if mode_select == 1:
             current_date()
@@ -74,4 +98,6 @@ def menu(username):
         elif mode_select == 4:
             set_target()
         elif mode_select == 5:
+            set_reminder()
+        elif mode_select == 6:
             break

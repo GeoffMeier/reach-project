@@ -103,7 +103,8 @@ def add_water(water_intake_oz, water_entries): # adding water entry
 def clear_water(): # clearing water entries
   return 0, []
 
-def schedule_reminder(): # scheduling hydration reminder
+def schedule_reminder():
+  hour_24 = 0
   while True:
       try:
         print("\n=== Set Reminder Time ===")

@@ -64,8 +64,8 @@ def start_workout(difficulty_level, total_min, daily_targ_min):
 
     
     print(f"You've completed {session_min} minutes for this session!")
-    print(f"You have completed your workout! {exercise_score} will be added to you exercise points.")
-    print(f"You have workouted out for a total of: {new_total_min} minutes")
+    print(f"You have completed your workout! {exercise_score} will be added to your exercise points.")
+    print(f"You have worked out for a total of: {new_total_min} minutes")
 
     return new_total_min, exercise_score
 
@@ -77,13 +77,13 @@ total_score = 0
 def workoutmenu(username):
     global total_min, total_score
     while True:
-        print("-" * 25)
+        print("\n=== WORKOUT MODE ===")
         print("1. Start Easy Workout")
         print("2. Start Medium Workout")
         print("3. Start Hard Workout")
         print("4. Exit")
 
-        user_choice = input("Choose level you would like to workout at (1. Easy, 2. Medium, 3. Hard, 4. Exit):")
+        user_choice = input("\nChoose level you would like to workout at (1. Easy, 2. Medium, 3. Hard, 4. Exit):")
 
         if user_choice == "1":
             total_min, earned_score = start_workout("Easy", total_min, daily_targ_min)
@@ -107,7 +107,7 @@ def workoutmenu(username):
 
             break
         else:
-            print("Invalid selection. please choose between 1, 2, 3, 4.")
+            print("Invalid selection")
 
 
 

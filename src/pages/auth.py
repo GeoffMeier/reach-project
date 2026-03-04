@@ -81,7 +81,7 @@ def create_account():
     load_users()
     user_id = len(users) + 1
 
-    print("\n--- Create Account ---")
+    print("\n=== Create Account ===")
     username = get_string("Username: ")
 
     if username in users:
@@ -129,7 +129,7 @@ def login():
     if username in users and users[username]["password"] == password:
         print(f"\nWelcome {users[username]['first_name']}!")
         print(f"User ID: {users[username]['userID']}")
-        return username   #  return username instead of True
+        return username   #  return username
     else:
         print("Invalid username or password.")
         return None

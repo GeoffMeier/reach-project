@@ -143,14 +143,14 @@ food_score = 0
 
 def nutrition_dashboard(calorie_target, calories_consumed, p, f, c, score):
     calories_left = calorie_target - calories_consumed
-    print(f"Your Nutrition Score is: {score}/10000")
+    print(f"\nYour Nutrition Score is: {score}/10000")
     print(f"You have {calories_left} calories left.")
     print(f"Protein: {p}g | Fiber: {f}g | Carbs: {c}g | Calories Consumed: {calories_consumed}")
 
 
 
 def log_nutrition(calories_consumed, p, f, c):
-    print("---Log Nutrition---")
+    print("=== Log Nutrition ===")
     input_cal = input("Enter calories consumed:")
     input_car = input("Enter carbs consumed:")
     input_prot = input("Enter protein consumed:")
@@ -216,13 +216,14 @@ def mealmenu(username):
     while True:
         score = food_score_calc(calorie_target, calories_consumed)
 
-        print("choose from the selection list:")
+        print("\n=== MEAL PLAN MODE ===")
+        print("\nChoose from the selection list:")
         print("1. Cuisine selection")
         print("2. Log nutrition")
         print("3. Nutrition Dashboard")
         print("4. Exit/Final Score Calculation")
 
-        user_choice = input("Select from (1-4):")
+        user_choice = input()
 
         if user_choice == "1":
             calories_consumed, p_tot, f_tot, c_tot = food_recommendations(calories_consumed, p_tot, f_tot, c_tot)
@@ -242,10 +243,10 @@ def mealmenu(username):
             from pages.auth import update_user_field
             update_user_field(username, "food_score", final_score)
 
-            print(f"Goodbye! Your final nutrition score is: {final_score}")
+            print(f"\nGoodbye! Your final nutrition score is: {final_score}")
             break
         else:
-            print("Please choose from 1, 2, 3, and 4.")
+            print("\nPlease choose from 1, 2, 3, and 4.")
 
 
 

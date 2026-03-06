@@ -13,10 +13,8 @@ def hydration_menu(username=None):
   nextReminder = None 
   reminder_trip = False # Reminder flag
 
-  print(f"{currentDate.strftime('%B %d, %Y')}\n")
-
   while True:
-    print("===== Hydration Menu =====\n")
+    print("===== HYDRATION MODE =====")
     if nextReminder is not None and not reminder_trip: # Check if its time for hydrate reminder
       reminder_trip = check_reminder(nextReminder)
 
@@ -37,9 +35,9 @@ def hydration_menu(username=None):
     print("2. Schedule Reminder")
     print("3. Add/Clear Water Entry")
     print("4. Show Hydration Summary")
-    print("5. Return to Main Menu\n")
+    print("5. Exit\n")
 
-    choice = input("Enter selection (1-5): ") # user selection
+    choice = input("Select option: ") # user selection
 
     if choice == '1':
       daily_water_target_oz = set_goal()
@@ -52,7 +50,12 @@ def hydration_menu(username=None):
     elif choice == '4':
       hydration_summary(current_time, reminder_clock, daily_water_target_oz, water_intake_oz, waterScore, progress, water_entries)
     elif choice == '5':
-      print(f"Exiting Hydration. Your Hydration Score is: {waterScore}")
+      print(f"\nExiting Hydration. Your Hydration Score is: {waterScore}")
+
+      if username:
+        from pages.auth import update_user_field
+        update_user_field(username, "water_score", waterScore)
+
       return waterScore
     else:
       print("[Invalid selection. Please try again.]\n")
@@ -64,13 +67,13 @@ def set_goal(): # setting hydration goal
 
 def add_edit_water_entry(water_intake_oz, water_entries): # adding or clearing water entries
   while True:
-    print("\n===== Add/Edit Water Entry =====\n")
+    print("\n===== Add/Edit Water Entry =====")
 
     print("1. Add Water Entry")
     print("2. Clear Water Entries")
-    print("3. Return to Main Menu\n")
+    print("3. Return to Main Hydration Menu\n")
 
-    choice = input("Enter selection (1-3): ")
+    choice = input("Select option: ")
 
     if choice == '1': # user selection
       water_intake_oz, water_entries = add_water(water_intake_oz, water_entries)
@@ -98,7 +101,8 @@ def add_water(water_intake_oz, water_entries): # adding water entry
 def clear_water(): # clearing water entries
   return 0, []
 
-def schedule_reminder(): # scheduling hydration reminder
+def schedule_reminder():
+  hour_24 = 0
   while True:
       try:
         print("\n=== Set Reminder Time ===")
@@ -106,7 +110,7 @@ def schedule_reminder(): # scheduling hydration reminder
         minute = int(input("Enter the minute (0-59): "))
         am_pm = input("Enter AM or PM: ").strip().upper()
 
-        if hour < 0 or hour > 12: # data validation
+        if hour < 1 or hour > 12: # data validation
           print("[Hour must be between 1 and 12]")
           continue
 
@@ -117,10 +121,10 @@ def schedule_reminder(): # scheduling hydration reminder
         if am_pm not in ["AM", "PM"]: # data validation
           print("[Invalid input. Please enter AM or PM.]")
           continue
-
+        hour_24 = hour
         if am_pm == "PM" and hour != 12: # time conversion
-          hour_24 = hour + 12
-        if am_pm == "AM" and hour == 12: # time conversion
+          hour_24 += 12
+        elif am_pm == "AM" and hour == 12: # time conversion
           hour_24 = 0
 
         reminder_time = time(hour_24, minute)
@@ -146,7 +150,7 @@ def check_reminder(nextReminder):
   return False
 
 def hydration_summary(current_time, reminder_clock, daily_water_target_oz, water_intake_oz, waterScore, progress, water_entries): # display hydration summary
-  print("\n=== Hydration Summary ===\n")
+  print("\n===== Hydration Summary =====")
   print("Current time:", current_time.strftime('%I:%M %p'),"\n")
 
   if reminder_clock:

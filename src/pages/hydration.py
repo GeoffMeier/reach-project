@@ -15,6 +15,7 @@ def hydration_menu(username=None):
 
   while True:
     print("===== HYDRATION MODE =====")
+
     if nextReminder is not None and not reminder_trip: # Check if its time for hydrate reminder
       reminder_trip = check_reminder(nextReminder)
 

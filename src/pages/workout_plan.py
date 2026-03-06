@@ -23,8 +23,8 @@ workout_level = {
 
     }
 #This is a timer that starts at the beginning of the workout and goes for however long the user inputted 
-def countdown(minutes):
-    t = minutes * 60
+def countdown(seconds):
+    t = seconds
     while t:
         mins, secs = divmod(t, 60)
         timer = '{:02d}:{:02d}'.format(mins, secs)
@@ -39,10 +39,10 @@ def start_workout(difficulty_level, total_min, daily_targ_min):
     selected_excersise = random.choice(workout_level[difficulty_level])
     session_min = 0
     
-    print(f"Your customized {difficulty_level} workout will begin now!")
+    print(f"\nYour customized {difficulty_level} workout will begin now!")
 
     for exercise in selected_excersise:
-        print(f"Current Activity: {exercise}")
+        print(f"\nCurrent Activity: {exercise}")
 
         minutes = int(input(f"How many minutes for {exercise}? "))
 
@@ -63,9 +63,9 @@ def start_workout(difficulty_level, total_min, daily_targ_min):
         exercise_score = 0
 
     
-    print(f"You've completed {session_min} minutes for this session!")
+    print(f"\nYou've completed {session_min} minutes for this session!")
     print(f"You have completed your workout! {exercise_score} will be added to your exercise points.")
-    print(f"You have worked out for a total of: {new_total_min} minutes")
+    print(f"You have worked out for a total of: {new_total_min} minutes\n")
 
     return new_total_min, exercise_score
 
@@ -77,13 +77,13 @@ total_score = 0
 def workoutmenu(username):
     global total_min, total_score
     while True:
-        print("\n=== WORKOUT MODE ===")
+        print("===== WORKOUT MODE =====")
         print("1. Start Easy Workout")
         print("2. Start Medium Workout")
         print("3. Start Hard Workout")
         print("4. Exit")
 
-        user_choice = input("\nChoose level you would like to workout at (1. Easy, 2. Medium, 3. Hard, 4. Exit):")
+        user_choice = input("\nChoose level you would like to workout at (1. Easy, 2. Medium, 3. Hard, 4. Exit): ")
 
         if user_choice == "1":
             total_min, earned_score = start_workout("Easy", total_min, daily_targ_min)
@@ -100,7 +100,7 @@ def workoutmenu(username):
 
 
         elif user_choice == "4":
-            print(f"Goodbye! Final Score: {total_score}")
+            print(f"\nExiting Workout. Exercise Score: {total_score}")
 
             from pages.auth import update_user_field
             update_user_field(username, "exercise_score", total_score)

@@ -145,23 +145,23 @@ def nutrition_dashboard(calorie_target, calories_consumed, p, f, c, score):
     calories_left = calorie_target - calories_consumed
     print(f"\nYour Nutrition Score is: {score}/10000")
     print(f"You have {calories_left} calories left.")
-    print(f"Protein: {p}g | Fiber: {f}g | Carbs: {c}g | Calories Consumed: {calories_consumed}")
+    print(f"Protein: {p}g | Fiber: {f}g | Carbs: {c}g | Calories Consumed: {calories_consumed}\n")
 
 
 
 def log_nutrition(calories_consumed, p, f, c):
-    print("=== Log Nutrition ===")
-    input_cal = input("Enter calories consumed:")
-    input_car = input("Enter carbs consumed:")
-    input_prot = input("Enter protein consumed:")
-    input_fib = input("Enter fiber consumed:")
+    print("\n===== Log Nutrition =====")
+    input_cal = input("Enter calories consumed: ")
+    input_car = input("Enter carbs consumed: ")
+    input_prot = input("Enter protein consumed: ")
+    input_fib = input("Enter fiber consumed: ")
 
     if input_cal.isdigit() and input_car.isdigit() and input_prot.isdigit() and input_fib.isdigit():
         calories_consumed += int(input_cal)
         p += int(input_prot)
         f += int(input_fib)
         c += int(input_car)
-        print("Your nutrition has been logged successfully!")
+        print("\nYour nutrition has been logged successfully!\n")
 
     else:
         print("Error, Invalid input.")
@@ -173,11 +173,11 @@ def log_nutrition(calories_consumed, p, f, c):
 def food_recommendations(calories_consumed, p, f, c):
     cuisine_options = ', '.join(Meal_Plan.keys())
 
-    print(f"Cuisine options are: {cuisine_options}")
-    preference = input("Enter your choice:").capitalize()
+    print(f"\nCuisine options are: {cuisine_options}")
+    preference = input("Enter your choice: ").capitalize()
 
     if preference in Meal_Plan:
-        print(f"Generating your {preference} meal plan...")
+        print(f"\nGenerating your {preference} meal plan...")
 
         for time_day in ["Breakfast", "Lunch", "Dinner",]:
             meal = random.choice(Meal_Plan[preference][time_day])
@@ -188,7 +188,7 @@ def food_recommendations(calories_consumed, p, f, c):
             f += meal['fiber']
             c += meal['carbs']
 
-            print("Your meal has been added to your daily count!")
+            print("Your meal has been added to your daily count!\n")
 
     else:
         print(f" {preference} is not available")
@@ -216,14 +216,13 @@ def mealmenu(username):
     while True:
         score = food_score_calc(calorie_target, calories_consumed)
 
-        print("\n=== MEAL PLAN MODE ===")
-        print("\nChoose from the selection list:")
+        print("===== MEAL PLAN MODE =====")
         print("1. Cuisine selection")
         print("2. Log nutrition")
         print("3. Nutrition Dashboard")
-        print("4. Exit/Final Score Calculation")
+        print("4. Exit")
 
-        user_choice = input()
+        user_choice = input("\nSelect option: ")
 
         if user_choice == "1":
             calories_consumed, p_tot, f_tot, c_tot = food_recommendations(calories_consumed, p_tot, f_tot, c_tot)
@@ -243,7 +242,7 @@ def mealmenu(username):
             from pages.auth import update_user_field
             update_user_field(username, "food_score", final_score)
 
-            print(f"\nGoodbye! Your final nutrition score is: {final_score}")
+            print(f"\nExiting Meal Plan. Your nutrition score is: {final_score}")
             break
         else:
             print("\nPlease choose from 1, 2, 3, and 4.")

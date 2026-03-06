@@ -81,7 +81,7 @@ def create_account():
     load_users()
     user_id = len(users) + 1
 
-    print("\n=== Create Account ===")
+    print("\n===== Create Account =====")
     username = get_string("Username: ")
 
     if username in users:
@@ -122,7 +122,7 @@ def create_account():
 
 def login():
     load_users()
-    print("\n--- Login ---")
+    print("\n===== Login =====")
     username = input("Username: ")
     password = input("Password: ")
 
@@ -137,14 +137,14 @@ def login():
 
 def start_auth_page():
     load_users()
-    print(users)
+    #print(users)
     while True:
-        print("\n=== REACH ===")
+        print("\n===== REACH =====")
         print("1. Login")
         print("2. Create Account")
         print("0. Exit")
 
-        choice = input("Select option: ")
+        choice = input("\nSelect option: ")
         if choice == "1":
             username = login()
             if username:

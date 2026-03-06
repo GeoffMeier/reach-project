@@ -25,13 +25,11 @@ def current_date():
 
 def set_time():
     global time_remaining
-    print("set time (seconds):")
-    time_remaining = int(input())
+    time_remaining = int(input("\nSet time (seconds): "))
     
 def set_target():
     global daily_target
-    print("set daily target (seconds)")
-    daily_target = int(input())
+    daily_target = int(input("\nSet daily target (seconds): "))
 
 def start():
     global time_remaining, time_elapsed, zen_score, daily_target
@@ -63,8 +61,7 @@ def set_reminder():
     reminder_time = 0
     beeps = 3
     
-    print("\nSet a duration for the reminder (minutes): ")
-    reminder_time = float(input()) * 60
+    reminder_time = float(input("\nSet a duration for the reminder (minutes): ")) * 60
     print(f"Reminder set for {reminder_time / 60} minutes.\n")
     
     while reminder_time > 0:
@@ -84,9 +81,10 @@ def set_reminder():
         
 def menu(username):
     while True:
-        print("\n=== ZEN MODE ===\n1. Display date\n2. Set time\n3. Start\n4. Set daily target\n5. Set reminder\n6. Exit")
-        mode_select = int(input())
+        print("\n===== ZEN MODE =====\n1. Display date\n2. Set time\n3. Start\n4. Set daily target\n5. Set reminder\n6. Exit")
+        mode_select = int(input("\nSelect option: "))
         if mode_select == 1:
+            print()
             current_date()
         elif mode_select == 2:
             set_time()

@@ -66,7 +66,8 @@ def home_menu(username):
         print("5. REACH Score")
         print("0. Logout")
 
-        choice = input("Select option: ")
+        choice = input("\nSelect option: ")
+        print()
 
         if choice == "1":
             mealmenu(username)
